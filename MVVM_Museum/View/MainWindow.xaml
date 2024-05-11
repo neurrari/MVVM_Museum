@@ -1,0 +1,494 @@
+﻿<Window x:Class="MVVM_Museum.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MVVM_Museum.View" xmlns:viewmodel="clr-namespace:MVVM_Museum.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:DataManage}"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="Auto" Width="900">
+    <Grid Margin="10,10,10,10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <TabControl x:Name="TabControl">
+
+            <TabItem Header="Act">
+                <Grid Margin="10">
+                    <StackPanel>
+                        <DataGrid x:Name="dgAct"
+                                  Height="400"
+                                  Grid.Row="0"
+                                  AutoGenerateColumns="False"
+                                  VerticalAlignment="Top"
+                                  HorizontalAlignment="Left">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="*" Header="Номер акта" Binding="{Binding Path=Id}"/>
+                                <DataGridTextColumn Width="*" Header="Дата выдачи" Binding="{Binding Path=DateIssuing}"/>
+                                <DataGridTextColumn Width="*" Header="Дата принятия" Binding="{Binding Path=DateAccepting}"/>
+                                <DataGridTextColumn Width="*" Header="Экспонат" Binding="{Binding Path=IdExhibit}"/>
+                                <DataGridTextColumn Width="*" Header="Выставка" Binding="{Binding Path=IdExhibition}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <TextBlock Text="Act Number:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="textBoxActId" Width="100"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <TextBlock Text="Date issuing:" Margin="5" VerticalAlignment="Center"/>
+                            <DatePicker x:Name="dpDateIssuing" Width="100"/>
+
+                            <TextBlock Text="Date accepting:" Margin="5" VerticalAlignment="Center"/>
+                            <DatePicker x:Name="dpDateAccepting" Width="100"/>
+
+                            <TextBlock Text="Exhibit ID:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="tbExhibitId" Width="100"/>
+
+                            <TextBlock Text="Exhibition Id:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="tbExhibitionId" Width="100"/>
+                            
+
+                            <Button Content="Add Act" Click="ButtonAddPosition_Click" Margin="5"/>
+                            <Button Content="Update Act" Click="ButtonUpdateAct_Click" Margin="5"/>
+                            <DatePicker/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <TextBlock Text="Number of act to del:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="textBoxActIdToDelete" Width="100" Margin="5"/>
+                            <Button Content="Delete Act" Click="ButtonDeleteAct_Click"/>
+                        </StackPanel>
+
+                        <Button x:Name="ButtonLoadActs" Content="Load Acts" Click="ButtonLoadActs_Click" Margin="5" Width="200" HorizontalAlignment="Left"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+
+            <TabItem Header="Employee">
+                <Grid Margin="10">
+                    <StackPanel>
+                        <DataGrid x:Name="dgEmployee"
+                                  Height="400" 
+                                  AutoGenerateColumns="False"
+                                  VerticalAlignment="Top"
+                                  HorizontalAlignment="Left">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="*" Header="Id" Binding="{Binding Path=Id}"/>
+                                <DataGridTextColumn Width="*" Header="Фамилия" Binding="{Binding Path=Lastname}"/>
+                                <DataGridTextColumn Width="*" Header="Имя" Binding="{Binding Path=Firstname}"/>
+                                <DataGridTextColumn Width="*" Header="Отчество" Binding="{Binding Path=Middlename}"/>
+                                <DataGridTextColumn Width="*" Header="Дата рождения" Binding="{Binding Path=DateOfBirth}"/>
+                                <DataGridTextColumn Width="*" Header="Адрес" Binding="{Binding Path=Address}"/>
+                                <DataGridTextColumn Width="*" Header="Телефон" Binding="{Binding Path=PhoneNumber}"/>
+                                <DataGridTextColumn Width="*" Header="Должность" Binding="{Binding Path=IdPosition}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <TextBlock Text="Employee Id:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="textBoxEmployeeId" Width="100"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <TextBlock Text="Lastname:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="tbLastname" Width="100"/>
+
+                            <TextBlock Text="Firstname:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="tbFirstname" Width="100"/>
+
+                            <TextBlock Text="Middlename:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="tbMiddlename" Width="100"/>
+
+                            <TextBlock Text="Date of birth:" Margin="5" VerticalAlignment="Center"/>
+                            <DatePicker x:Name="dpDateOfBirth" Width="100"/>
+
+                            <TextBlock Text="Address:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="tbAddress" Width="100"/>
+
+                            <TextBlock Text="Phone:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="tbPhone" Width="100"/>
+
+                            <TextBlock Text="PositionId:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="tbPositionId" Width="100"/>
+                            
+
+                            <Button Content="Add Employee" Click="ButtonAddEmployee_Click" Margin="5"/>
+                            <Button Content="Update Employee" Click="ButtonUpdateEmployee_Click" Margin="5"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <TextBlock Text="Number of employee to del:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="textBoxEmployeeIdToDelete" Width="100" Margin="5"/>
+                            <Button Content="Delete Employee" Click="ButtonDeleteEmployee_Click"/>
+                        </StackPanel>
+
+                        <Button x:Name="ButtonLoadEmployees" Content="Load Employees" Click="ButtonLoadEmployees_Click" Margin="5" Width="200" HorizontalAlignment="Left"/>
+                    </StackPanel>
+                </Grid>
+
+                
+            </TabItem>
+
+
+            <TabItem Header="Exhibit">
+                <Grid Margin="10">
+                    <StackPanel>
+                        <DataGrid x:Name="dgExhibit"
+                                  Height="400" 
+                                  AutoGenerateColumns="False"
+                                  VerticalAlignment="Top"
+                                  HorizontalAlignment="Left">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="*" Header="Id" Binding="{Binding Path=Id}"/>
+                                <DataGridTextColumn Width="*" Header="Название" Binding="{Binding Path=NameExhibit}"/>
+                                <DataGridTextColumn Width="*" Header="Автор" Binding="{Binding Path=Author}"/>
+                                <DataGridTextColumn Width="*" Header="Дата создания" Binding="{Binding Path=DateCreate}"/>
+                                <DataGridTextColumn Width="*" Header="Техника" Binding="{Binding Path=IdTechnique}"/>
+                                <DataGridTextColumn Width="*" Header="Ответственный" Binding="{Binding Path=IdEmployee}"/>
+                                <DataGridTextColumn Width="*" Header="Хранилище" Binding="{Binding Path=IdStorage}"/>
+                                <DataGridTextColumn Width="*" Header="Зал" Binding="{Binding Path=IdMuseumHall}"/>
+                                <DataGridTextColumn Width="*" Header="Путь поступления" Binding="{Binding Path=IdReceptionWay}"/>
+                                <DataGridTextColumn Width="*" Header="Тип хранения" Binding="{Binding Path=IdTypeOfStoring}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <TextBlock Text="Exhibit Id:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="textBoxExhibitId" Width="100"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <TextBlock Text="NameExhibit:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="tbNameExhibit" Width="100"/>
+
+                            <TextBlock Text="Author:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="tbAuthor" Width="100"/>
+
+                            <TextBlock Text="DateCreate:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="tbDateCreate" Width="100"/>
+
+                            <TextBlock Text="WorkTechniqueId:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="tbWorkTechniqueId" Width="100"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="EmployeeId:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="tbEmployeeIdExhibit" Width="100"/>
+
+                            <TextBlock Text="StorageId:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="tbStorageId" Width="100"/>
+
+                            <TextBlock Text="MuseumHallId:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="tbMuseumHallId" Width="100"/>
+
+                            <TextBlock Text="ReceptionWayId:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="tbReceptionWayId" Width="100"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="TypeOfStoringId:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="tbTypeOfStoringId" Width="100"/>
+                            
+                            <Button Content="Add Exhibit" Click="ButtonAddPosition_Click" Margin="5"/>
+                            <Button Content="Update Exhibit" Click="ButtonUpdateExhibit_Click" Margin="5"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <TextBlock Text="Number of exhibit to del:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="textBoxExhibitIdToDelete" Width="100" Margin="5"/>
+                            <Button Content="Delete Exhibit" Click="ButtonDeleteExhibit_Click"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="ButtonLoadExhibits" Content="Load Exhibits" Click="ButtonLoadExhibits_Click" Margin="5" Width="200" HorizontalAlignment="Left"/>
+                            <TextBlock Text="Фильтрация: " Margin="5"/>
+                            <ComboBox x:Name="comboBoxFilterBy" Width="150" SelectionChanged="comboBoxFilterBy_SelectionChanged" Margin="5">
+                                <ComboBoxItem>Id</ComboBoxItem>
+                                <ComboBoxItem>Название</ComboBoxItem>
+                                <ComboBoxItem>Автор</ComboBoxItem>
+                            </ComboBox>
+                            <TextBox x:Name="textBoxFilter" Margin="5" Width="150" TextChanged="textBoxFilter_TextChanged"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+
+            <TabItem Header="Exhibition">
+                <Grid Margin="10">
+                    <StackPanel>
+                        <DataGrid x:Name="dgExhibition"
+                                  Height="400" 
+                                  AutoGenerateColumns="False"
+                                  VerticalAlignment="Top"
+                                  HorizontalAlignment="Left">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="*" Header="Id" Binding="{Binding Path=Id}"/>
+                                <DataGridTextColumn Width="*" Header="Название" Binding="{Binding Path=NameExhibition}"/>
+                                <DataGridTextColumn Width="*" Header="Организатор" Binding="{Binding Path=Arranger}"/>
+                                <DataGridTextColumn Width="*" Header="Дата открытия" Binding="{Binding Path=DateOpen}"/>
+                                <DataGridTextColumn Width="*" Header="Дата закрытия" Binding="{Binding Path=DateClose}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <TextBlock Text="Exhibition Id:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="textBoxExhibitionId" Width="100"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <TextBlock Text="NameExhibition:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="tbNameExhibition" Width="100"/>
+
+                            <TextBlock Text="Arranger:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="tbArranger" Width="100"/>
+
+                            <TextBlock Text="Date open:" Margin="5" VerticalAlignment="Center"/>
+                            <DatePicker x:Name="dpDateOpen" Width="100"/>
+
+                            <TextBlock Text="Date close:" Margin="5" VerticalAlignment="Center"/>
+                            <DatePicker x:Name="dpDateClose" Width="100"/>
+                            
+
+                            <Button Content="Add Exhibition" Click="ButtonAddExhibition_Click" Margin="5"/>
+                            <Button Content="Update Exhibition" Click="ButtonUpdateExhibition_Click" Margin="5"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <TextBlock Text="Number of exhibition to del:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="textBoxExhibitionIdToDelete" Width="100" Margin="5"/>
+                            <Button Content="Delete Exhibition" Click="ButtonDeleteExhibition_Click"/>
+                        </StackPanel>
+
+                        <Button x:Name="ButtonLoadExhibitions" Content="Load Exhibitions" Click="ButtonLoadExhibitions_Click" Margin="5" Width="200" HorizontalAlignment="Left"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+
+            <TabItem Header="MuseumHall">
+                <Grid Margin="10">
+                    <StackPanel>
+                        <DataGrid x:Name="dgMuseumHall"
+                                  Height="400" 
+                                  AutoGenerateColumns="False"
+                                  VerticalAlignment="Top"
+                                  HorizontalAlignment="Left">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="*" Header="Id" Binding="{Binding Path=Id}"/>
+                                <DataGridTextColumn Width="*" Header="Номер зала" Binding="{Binding Path=NumberOfHall}"/>
+                                <DataGridTextColumn Width="*" Header="Количество мест" Binding="{Binding Path=AmountOfPlaces}"/>
+                                <DataGridTextColumn Width="*" Header="Ответственный" Binding="{Binding Path=IdEmployee}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <TextBlock Text="Hall Id:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="textBoxMuseumHallId" Width="100"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="5">
+
+                            <TextBlock Text="NumberOfHall:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="tbNumberOfHall" Width="100"/>
+
+                            <TextBlock Text="AmountOfPlaces:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="tbAmountOfPlacesHall" Width="100"/>
+
+                            <TextBlock Text="EmployeeId:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="tbEmployeeIdHall" Width="100"/>
+
+                            <Button Content="Add MuseumHall" Click="ButtonAddMuseumHall_Click" Margin="5"/>
+                            <Button Content="Update MuseumHall" Click="ButtonUpdateMuseumHall_Click" Margin="5"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <TextBlock Text="Number of hall to del:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="textBoxMuseumHallIdToDelete" Width="100" Margin="5"/>
+                            <Button Content="Delete MuseumHall" Click="ButtonDeleteMuseumHall_Click"/>
+                        </StackPanel>
+
+                        <Button x:Name="ButtonLoadMuseumHalls" Content="Load MuseumHalls" Click="ButtonLoadMuseumHalls_Click" Margin="5" Width="200" HorizontalAlignment="Left"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+
+            <TabItem Header="Position">
+                <Grid Margin="10">
+                    <StackPanel>
+                        <DataGrid x:Name="dgPosition"
+                                  Height="400" 
+                                  AutoGenerateColumns="False"
+                                  VerticalAlignment="Top"
+                                  HorizontalAlignment="Left">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="*" Header="Id" Binding="{Binding Path=Id}"/>
+                                <DataGridTextColumn Width="*" Header="Название" Binding="{Binding Path=NamePosition}"/>
+                                <DataGridTextColumn Width="*" Header="Зарплата" Binding="{Binding Path=Salary}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <TextBlock Text="Position Id:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="textBoxPositionId" Width="100"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <TextBlock Text="NamePosition:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="tbNamePosition" Width="100"/>
+
+                            <TextBlock Text="Salary:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="tbSalary" Width="100"/>
+
+                            <Button Content="Add Position" Click="ButtonAddPosition_Click" Margin="5"/>
+                            <Button Content="Update Position" Click="ButtonUpdatePosition_Click" Margin="5"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <TextBlock Text="Number of position to del:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="textBoxPositionIdToDelete" Width="100" Margin="5"/>
+                            <Button Content="Delete Position" Click="ButtonDeletePosition_Click"/>
+                        </StackPanel>
+
+                        <Button x:Name="ButtonLoadPositions" Content="Load Positions" Click="ButtonLoadPositions_Click" Margin="5" Width="200" HorizontalAlignment="Left"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+
+            <TabItem Header="ReceptionWay">
+                <Grid Margin="10">
+                    <StackPanel>
+                        <DataGrid x:Name="dgReceptionWay"
+                                  Height="400" 
+                                  AutoGenerateColumns="False"
+                                  VerticalAlignment="Top"
+                                  HorizontalAlignment="Left">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="*" Header="Id" Binding="{Binding Path=Id}"/>
+                                <DataGridTextColumn Width="*" Header="Название" Binding="{Binding Path=NameReceptionWay}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <Button x:Name="ButtonLoadReceptionWays" Content="Load ReceptionWays" Click="ButtonLoadReceptionWays_Click" Margin="5" Width="200" HorizontalAlignment="Left"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+
+            <TabItem Header="Storage">
+                <Grid Margin="10">
+                    <StackPanel>
+                        <DataGrid x:Name="dgStorage"
+                                  Height="400" 
+                                  AutoGenerateColumns="False"
+                                  VerticalAlignment="Top"
+                                  HorizontalAlignment="Left">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="*" Header="Id" Binding="{Binding Path=Id}"/>
+                                <DataGridTextColumn Width="*" Header="Номер хранилища" Binding="{Binding Path=NumberOfStorage}"/>
+                                <DataGridTextColumn Width="*" Header="Количество мест" Binding="{Binding Path=AmountOfPlaces}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <TextBlock Text="Storage Id:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="textBoxStorageId" Width="100"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <TextBlock Text="NumberOfStorage:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="tbNumberOfStorage" Width="100"/>
+
+                            <TextBlock Text="AmountOfPlaces:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="tbAmountOfPlacesStorage" Width="100"/>
+                            
+
+                            <Button Content="Add Storage" Click="ButtonAddStorage_Click" Margin="5"/>
+                            <Button Content="Update Storage" Click="ButtonUpdateStorage_Click" Margin="5"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <TextBlock Text="Number of act to del:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="textBoxStorageIdToDelete" Width="100" Margin="5"/>
+                            <Button Content="Delete Storage" Click="ButtonDeleteStorage_Click"/>
+                        </StackPanel>
+
+                        <Button x:Name="ButtonLoadStorages" Content="Load Storages" Click="ButtonLoadStorages_Click" Margin="5" Width="200" HorizontalAlignment="Left"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            
+
+            <TabItem Header="TypeOfStoring">
+                <Grid Margin="10">
+                    <StackPanel>
+                        <DataGrid x:Name="dgTypeOfStoring"
+                                  Height="400" 
+                                  AutoGenerateColumns="False"
+                                  VerticalAlignment="Top"
+                                  HorizontalAlignment="Left">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="*" Header="Id" Binding="{Binding Path=Id}"/>
+                                <DataGridTextColumn Width="*" Header="Название" Binding="{Binding Path=NameTypeOfStoring}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+
+                        <Button x:Name="ButtonLoadTypesOfStoring" Content="Load TypesOfStoring" Click="ButtonLoadTypesOfStoring_Click" Margin="5" Width="200" HorizontalAlignment="Left"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+
+            <TabItem Header="WorkTechnique">
+                <Grid Margin="10">
+                    <StackPanel>
+                        <DataGrid x:Name="dgWorkTechnique"
+                                  Height="400" 
+                                  AutoGenerateColumns="False"
+                                  VerticalAlignment="Top"
+                                  HorizontalAlignment="Left">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="*" Header="Id" Binding="{Binding Path=Id}"/>
+                                <DataGridTextColumn Width="*" Header="Название" Binding="{Binding Path=NameTechnique}"/>
+                                <DataGridTextColumn Width="*" Header="Материал" Binding="{Binding Path=Material}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <TextBlock Text="Work technique Id:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="textBoxWorkTechniqueId" Width="100"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <TextBlock Text="Name Texchnique:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="tbNameTechnique" Width="100"/>
+
+                            <TextBlock Text="Material:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="tbMaterial" Width="100"/>
+
+                            <Button Content="Add WorkTechnique" Click="ButtonAddWorkTechnique_Click" Margin="5"/>
+                            <Button Content="Update WorkTechnique" Click="ButtonUpdateWorkTechnique_Click" Margin="5"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <TextBlock Text="Number of act to del:" Margin="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="textBoxWorkTechniqueIdToDelete" Width="100" Margin="5"/>
+                            <Button Content="Delete WorkTechnique" Click="ButtonDeleteWorkTechnique_Click"/>
+                        </StackPanel>
+
+                        <Button x:Name="ButtonLoadWorkTechniques" Content="Load Work Techniques" Click="ButtonLoadWorkTechniques_Click" Margin="5" Width="200" HorizontalAlignment="Left"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            
+        </TabControl>
+    </Grid>
+</Window>
